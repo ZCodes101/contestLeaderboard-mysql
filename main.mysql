@@ -1,0 +1,12 @@
+WITH TopThree AS (
+    SELECT score
+    FROM leaderboard
+    ORDER BY score DESC
+    LIMIT 3
+)
+
+SELECT name
+FROM leaderboard
+WHERE score NOT IN (SELECT * FROM TopThree)
+ORDER BY score DESC
+LIMIT 5;
